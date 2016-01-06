@@ -1,0 +1,39 @@
+body {
+  padding: 1em;
+}
+
+div#top {
+  background-color: white;
+
+}
+
+div#centered {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  background-color: rgb(220, 220, 220);
+}
+
+
+/* For Project posts */
+.projectTitle {
+
+}
+
+.projectDate {
+
+}
+
+.projectBody {
+  
+}
+
+
+
+section#projectsSection{
+
+}
+
+article#template{
+
+}
