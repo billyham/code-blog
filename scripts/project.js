@@ -22,7 +22,14 @@ Project.prototype.toHtml = function(){
   $newProject.find('.projectTitle').text(this.title);
 
   // Add the relative Date
-  $newProject.find('.projectDate').text(this.dateOfCreation);
+  var stringDate = ((new Date() - new Date(this.dateOfCreation))/60/60/24/1000);
+  var intDate = parseInt(stringDate);
+
+  if (intDate < 1){
+    $newProject.find('.projectDate').text('New! Just posted');
+  }else{
+    $newProject.find('.projectDate').text('Posted ' + intDate + ' days ago');
+  }
 
   // Add the body text
   $newProject.find('.projectBody').text(this.body);

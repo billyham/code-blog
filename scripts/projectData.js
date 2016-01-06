@@ -6,7 +6,7 @@ var projectData= [
   },
   {
     title: 'Second Project',
-    body: 'My cat loves to chase her mouse toy.',
+    body: 'My cat loves to chase her mouse toy. It\'s a grey mouse with a tail. My cat will run and run after it all night long. She\'s a silly cat',
     dateOfCreation: '2016-1-05'
   }
 

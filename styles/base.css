@@ -1,3 +1,4 @@
+/* Basic page layout */
 body {
   padding: 1em;
 }
@@ -16,24 +17,18 @@ div#centered {
 
 
 /* For Project posts */
-.projectTitle {
+article.projectArticle{
+  padding-bottom: 15px;
+}
+
+h1.projectTitle {
 
 }
 
-.projectDate {
+p.projectDate {
 
 }
 
-.projectBody {
-  
-}
-
-
-
-section#projectsSection{
-
-}
-
-article#template{
+p.projectBody {
 
 }
