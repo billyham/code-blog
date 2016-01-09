@@ -11,15 +11,22 @@ div#top {
 div#centered {
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
-  background-color: rgb(220, 220, 220);
+  width: 700px;
+  /*background-color: rgb(220, 220, 220);*/
 }
 
+/* Header */
 
 /* For Project posts */
 article.projectArticle{
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-bottom: 15px;
+  margin-bottom: 5px;
+  background-color: rgb(230, 235, 240);
 }
+
 
 h1.projectTitle {
 

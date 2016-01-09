@@ -27,10 +27,26 @@ function populateFilters(){
 
 // Handler for filtering Projects based on the Select form value
 function filterHandler(e){
-
-// !!__ I'm trying to figure out how to treate the event target as a jQuery object __!!
   $catFilter = $(e.target);
-  // console.log($catFilter.width());
 
+  var selectionString = $catFilter.val();
 
+  // If no value exists, show all projects and exit the function
+  if (!selectionString){
+    $('article.projectArticle').show();
+    return;
+  }
+
+  // Start by hiding all projects
+  $('article.projectArticle').hide();
+
+  // For any project witih a matching cateogry, show it
+  $('article.projectArticle').each(function(){
+
+    var thisCategory = $(this).find('.projectCategory').text();
+
+    if (thisCategory === selectionString){
+      $(this).show();
+    }
+  });
 };
