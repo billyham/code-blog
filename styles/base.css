@@ -1,41 +1,45 @@
 /* Basic page layout */
 body {
-  padding: 1em;
+  /*padding: 1em;*/
 }
 
 div#top {
   background-color: white;
-
 }
 
 div#centered {
   margin-left: auto;
   margin-right: auto;
-  width: 700px;
+  max-width: 800px;
+  /*width: 700px;*/
   /*background-color: rgb(220, 220, 220);*/
 }
 
 /* Header */
 
-/* For Project posts */
-article.projectArticle{
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 15px;
-  margin-bottom: 5px;
-  background-color: rgb(230, 235, 240);
+/* Hide the menu checkbox*/
+.nav-trigger{
+  position:absolute;;
+  clip: rect(0,0,0,0);
 }
 
-
-h1.projectTitle {
-
+label{
+  position: fixed;
+  left: 1em;
+  top: 1em;
+  z-index: 2;
 }
 
-p.projectDate {
-
+nav {
+  float: right;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  max-width: 50%;
 }
 
-p.projectBody {
-
+li {
+  font-family: sans-serif;
+  display: inline;
+  margin-left: 3%;
+  margin-right: 3%;
 }

@@ -1,0 +1,43 @@
+/* For Project posts */
+article.projectArticle{
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+  /*background-color: rgb(230, 235, 240);*/
+}
+
+.alternateColor{
+  background-color: rgb(240, 235, 230);
+}
+
+h1 {
+  font-family: sans-serif;
+}
+h2 {
+  font-family: sans-serif;
+}
+
+p{
+  font-family: sans-serif;
+}
+
+
+/* Images*/
+img {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+/* For screens larger than 480px*/
+@media all and (min-width:480px){
+
+  img {
+    min-width: 40%;
+    max-width: 40%;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    float: right;
+  }
+}

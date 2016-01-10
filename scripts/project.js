@@ -4,6 +4,7 @@ function Project(dataObject){
   this.title = dataObject.title;
   this.category = dataObject.category;
   this.body = dataObject.body;
+  this.imageMain = dataObject.imageMain;
   this.dateOfCreation = dataObject.dateOfCreation;
   this.additionalText = dataObject.additionalText;
 };
@@ -22,7 +23,15 @@ Project.prototype.toHtml = function(){
   $newProject.find('.projectTitle').text(this.title);
 
   // Add the category
-  $newProject.find('.projectCategory').text(this.category);
+  $newProject.find('.projectCategory').text('Category: ' + this.category);
+
+  // Add the main image if it exists otherwise remove the image element
+  if (this.imageMain){
+    $newProject.find('img').attr('src','images/' + this.imageMain);
+  }else{
+    $newProject.find('img').remove();
+  }
+
 
   // Add the relative Date
   var stringDate = ((new Date() - new Date(this.dateOfCreation))/60/60/24/1000);
@@ -48,7 +57,7 @@ Project.prototype.toHtml = function(){
     // No additional text, so hide the show more anchor
     $newProject.find('a').remove();
   }
-  
+
   return $newProject;
 };
 
@@ -74,5 +83,22 @@ function showMoreHandler(e){
     // Change the <a> tag back to show more
     $(e.target).text('show more');
   }
-
 };
+
+// Hand this a set of project article elements in order to set background color on them
+function determineBackgroundColor($projectArticle){
+
+  // Integer to keep track of odds and events
+  var shouldBeAlternateColor = true;
+
+  $projectArticle.each(function(){
+    // Alternate background colors
+    if (shouldBeAlternateColor){
+      shouldBeAlternateColor= false;
+      $(this).addClass('alternateColor');
+    }else{
+      shouldBeAlternateColor = true;
+      $(this).removeClass('alternateColor');
+    }
+  });
+}

@@ -34,11 +34,15 @@ function filterHandler(e){
   // If no value exists, show all projects and exit the function
   if (!selectionString){
     $('article.projectArticle').show();
+    determineBackgroundColor($('article.projectArticle'));
     return;
   }
 
   // Start by hiding all projects
   $('article.projectArticle').hide();
+
+  // Integer to keep track of odds and events
+  var shouldBeAlternateColor = true;
 
   // For any project witih a matching cateogry, show it
   $('article.projectArticle').each(function(){
@@ -46,7 +50,36 @@ function filterHandler(e){
     var thisCategory = $(this).find('.projectCategory').text();
 
     if (thisCategory === selectionString){
+
+      // Show this project
       $(this).show();
-    }
+
+      // Alternate background colors
+      if (shouldBeAlternateColor){
+        shouldBeAlternateColor= false;
+        $(this).addClass('alternateColor');
+      }else{
+        shouldBeAlternateColor = true;
+        $(this).removeClass('alternateColor');
+      }
+    };
   });
-};
+}
+
+// Handler for clicks on the nav links
+function navHandler(e){
+  $anchor = $(e.target);
+  if ($anchor.text() === 'About'){
+    e.preventDefault();
+    // Show about section and Hide project Section
+    $('#projectsSection').hide();
+    $('#aboutSection').show();
+  }else if($anchor.text() === 'Home'){
+    e.preventDefault();
+    // Show project section and hid about hide section
+    $('#aboutSection').hide();
+    $('#projectsSection').show();
+  }else{
+    // For future navigation links
+  };
+}

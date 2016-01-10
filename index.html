@@ -4,11 +4,29 @@
   <meta charset="UTF-8">
   <title>Dave's Project Blog</title>
   <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/icon.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/module.css">
+  <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
   <div id="top">
     <div id="centered">
+
+      <nav id="mainNav">
+        <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label.icon-menu for="nav-trigger"></label> -->
+
+        <ul>
+          <li id="homeNavLink"><a href="">Home</a></li>
+          <li id="aboutNavLink"><a href="">About</a></li>
+          <li><a href="https://github.com/billyham">GitHub</a></li>
+          <li><a href="https://twitter.com/DaveHanagan">Twitter</a></li>
+        </ul>
+      </nav>
+
+      <br />
 
       <header>
         <!-- Title goes here -->
@@ -17,23 +35,14 @@
         <h2>A portfolio of projects.</h2>
       </header>
 
-      <nav id="mainNav">
 
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li><a href="https://github.com/billyham">GitHub</a></li>
-          <li><a href="https://twitter.com/DaveHanagan">Twitter</a></li>
-        </ul>
+      <div>
+        <select id="categoryFilter">
+          <option value="">__ Filter by category __</option>
+        </select>
+      </div>
 
-        <div>
-          <select id="categoryFilter">
-            <option value="">__ Filter by category __</option>
-          </select>
-        </div>
-
-        <hr />
-      </nav>
+      <hr />
 
       <main>
         <section id="projectsSection" class="tab-content">
@@ -42,6 +51,8 @@
 
           <!-- template project post -->
           <article id="template" class="projectArticle" data-additionalText = "text">
+            <!-- Main Image -->
+            <img src="images/kitsch2.jpg"></img>
             <!-- Title of post -->
             <h1 class="projectTitle">Template Title</h1>
             <!-- Category of post -->
@@ -56,10 +67,19 @@
         </section>
 
         <section id="aboutSection" class="tab-content">
-
+          <h1>Something about me</h1>
+          <p>
+            A careful disassembly and reassembly of a Panasonic HVX200 video
+            camera in order to remove the compensator lens element from the camera's
+            fixed lens to allow for very close up focusing. With a meticulous
+            attention to detail, I explored the inner workings of a professional HD
+            camera. Although my goal to entirely remove the lens wasn't achievable,
+            I succeeded at modifying the internal lens enough to enable the camera
+            to be used for recording the individual images on the surface of a
+            film.
+          </p>
 
         </section>
-
 
         <footer>
           <hr />

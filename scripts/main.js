@@ -22,8 +22,17 @@ for (var i in projects){
 // Delete the template project
 $('article#template').remove();
 
+// Update the background colors on the Projects
+determineBackgroundColor($('article.projectArticle'));
+
 // Populate the Category filter with categories as options
 populateFilters();
 
 // Add an event responder function for when the cateogry filter changes
 $('#categoryFilter').on('change', filterHandler);
+
+// Add an event responder function for when a nav item is clicked
+$('#mainNav').on('click', 'ul', navHandler);
+
+// Initially hide the about section
+$('#aboutSection').hide();
