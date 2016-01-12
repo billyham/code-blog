@@ -1,15 +1,14 @@
 /* For Project posts */
 article.projectArticle{
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 15px;
-  margin-bottom: 5px;
-  /*background-color: rgb(230, 235, 240);*/
+  padding-top: .5em;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-bottom: 1.5em;
+  margin-bottom: .5em;
 }
 
 .alternateColor{
-  background-color: rgb(240, 235, 230);
+  background-color: rgb(240, 240, 240);
 }
 
 h1 {
@@ -19,7 +18,11 @@ h2 {
   font-family: sans-serif;
 }
 
-p{
+p {
+  font-family: sans-serif;
+}
+
+a {
   font-family: sans-serif;
 }
 

@@ -18,7 +18,7 @@ var projectData= [
   {
     title: 'iPad App for Rental Equipment Checkout',
     category: 'Productivity',
-    imageMain: '',
+    imageMain: 'gear2.jpg',
     body: 'A custom iPad app for managing equipment inventory and checkout procedures. The iPad uses a shared server as a data source so that many iPads can be in use among multiple staff members at any one time. Equipment is labeled with QR codes for easy scanning to look up or checkout pieces of gear. ',
     dateOfCreation: '2016-1-07',
     additionalText: 'I hereby assume full responsibility for the above listed equipment provided by the Northwest Film Center. Financial responsibility includes payment for all repairs, up to the full replacement value of equipment, and the full replacement value for all stolen or lost equipment. Financial responsibility also includes the rental fee for the time period in which damaged equipment is out for repair, or until replacement payment is received. I have inspected the contents of rental equipment and acknowledge that all parts and pieces are present and in working order unless otherwise noted.'
