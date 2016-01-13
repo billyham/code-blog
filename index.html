@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Dave's Project Blog</title>
   <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/icon.css">
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/module.css">
+  <link rel="stylesheet" href="styles/theme.css">
   <meta name="viewport" content="width=device-width">
 </head>
 
@@ -17,15 +17,13 @@
       <nav id="mainNav">
         <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label.icon-menu for="nav-trigger"></label> -->
-
-        <ul>
-          <li id="homeNavLink"><a href="">Home</a></li>
-          <li id="aboutNavLink"><a href="">About</a></li>
+        <ul class="accordian">
+          <li id="homeNavLink"><a href="" data-nav="home">Home</a></li>
+          <li id="aboutNavLink"><a href="" data-nav="about">About</a></li>
           <li><a href="https://github.com/billyham">GitHub</a></li>
           <li><a href="https://twitter.com/DaveHanagan">Twitter</a></li>
         </ul>
       </nav>
-
       <br />
 
       <header>

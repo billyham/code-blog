@@ -69,12 +69,12 @@ function filterHandler(e){
 // Handler for clicks on the nav links
 function navHandler(e){
   $anchor = $(e.target);
-  if ($anchor.text() === 'About'){
+  if ($anchor.data('nav') === 'about'){
     e.preventDefault();
     // Show about section and Hide project Section
     $('#projectsSection').hide();
     $('#aboutSection').show();
-  }else if($anchor.text() === 'Home'){
+  }else if($anchor.data('nav') === 'home'){
     e.preventDefault();
     // Show project section and hid about hide section
     $('#aboutSection').hide();
