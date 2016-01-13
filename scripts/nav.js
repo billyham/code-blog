@@ -2,7 +2,7 @@
 // Function for populating the nav filter
 function populateFilters(){
   $('article.projectArticle').each(function(){
-    var categoryValue = $(this).find('p.projectCategory').text();
+    var categoryValue = $(this).find('p.projectCategory').data('category');
 
     var optionValue = '<option value="' + categoryValue + '">' + categoryValue + '</option>';
 
@@ -47,7 +47,7 @@ function filterHandler(e){
   // For any project witih a matching cateogry, show it
   $('article.projectArticle').each(function(){
 
-    var thisCategory = $(this).find('.projectCategory').text();
+    var thisCategory = $(this).find('.projectCategory').data('category');
 
     if (thisCategory === selectionString){
 
@@ -69,17 +69,26 @@ function filterHandler(e){
 // Handler for clicks on the nav links
 function navHandler(e){
   $anchor = $(e.target);
-  if ($anchor.data('nav') === 'about'){
+  // Determine if tab content should change, otherwise allow the anchor tag's default action
+  if ($anchor.data('nav')){
     e.preventDefault();
-    // Show about section and Hide project Section
-    $('#projectsSection').hide();
-    $('#aboutSection').show();
-  }else if($anchor.data('nav') === 'home'){
-    e.preventDefault();
-    // Show project section and hid about hide section
-    $('#aboutSection').hide();
-    $('#projectsSection').show();
-  }else{
-    // For future navigation links
-  };
+    $('.tab-content').hide();
+    var thisString = '#' + $anchor.data('nav') + '-section';
+    $(thisString).show();
+  }
+
+// HA HA, this verbose code was replaced with above after code review. Thanks code review!
+  // if ($anchor.data('nav') === 'about'){
+  //   e.preventDefault();
+  //   // Show about section and Hide project Section
+  //   $('#home-section').hide();
+  //   $('#about-section').show();
+  // }else if($anchor.data('nav') === 'home'){
+  //   e.preventDefault();
+  //   // Show project section and hid about hide section
+  //   $('#about-section').hide();
+  //   $('#home-section').show();
+  // }else{
+  //   // For future navigation links
+  // };
 }

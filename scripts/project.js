@@ -7,58 +7,44 @@ function Project(dataObject){
   this.imageMain = dataObject.imageMain;
   this.dateOfCreation = dataObject.dateOfCreation;
   this.additionalText = dataObject.additionalText;
+  this.key = dataObject.key;
 };
 
 Project.prototype.toHtml = function(){
-  // Make a copy of the template projet text
-  var $newProject = $('article#template').clone();
 
-  // Console log for caveman debugging
-  // console.log('I\'m alive');
-
-  // Remove the id attribute
-  $newProject.removeAttr('id');
-
-  // Add the title
-  $newProject.find('.projectTitle').text(this.title);
-
-  // Add the category
-  $newProject.find('.projectCategory').text('Category: ' + this.category);
-
-  // Add the main image if it exists otherwise remove the image element
-  if (this.imageMain){
-    $newProject.find('img').attr('src','images/' + this.imageMain);
-  }else{
-    $newProject.find('img').remove();
-  }
-
-
-  // Add the relative Date
+  // Determine the relative Date
   var stringDate = ((new Date() - new Date(this.dateOfCreation))/60/60/24/1000);
   var intDate = parseInt(stringDate);
-
   if (intDate < 1){
-    $newProject.find('.projectDate').text('New! Just posted');
+    stringDate = 'New! Just posted';
   }else{
-    $newProject.find('.projectDate').text('Posted ' + intDate + ' days ago');
+    stringDate = 'Posted ' + intDate + ' days ago';
   }
 
-  // Add the body text
-  $newProject.find('.projectBody').text(this.body);
+  // Get the project template
+  var projectTemplateScript = $('#project-template').html();
+  // Compile the template
+  var compiledTemplate = Handlebars.compile(projectTemplateScript);
+  // Define the context
+  var context = {
+    project: [
+      {
+        title: this.title,
+        category: this.category,
+        body: this.body,
+        imageMain: this.imageMain,
+        additionalText: this.additionalText,
+        projectDate: stringDate,
+        key: this.key
+      }
+    ]
+  };
 
-  // Determine if additional text exists
-  if (this.additionalText){
-    // Save the additional text as data
-    $newProject.attr('data-additionalText', this.additionalText);
+  // Add the data to the template
+  var theCompiledHtml = compiledTemplate(context);
 
-    // Add the event handler when show more is tapped
-    $newProject.find('a').on('click', showMoreHandler);
-  }else{
-    // No additional text, so hide the show more anchor
-    $newProject.find('a').remove();
-  }
-
-  return $newProject;
+  // Add the HTML to the package
+  $('#home-section').append(theCompiledHtml);
 };
 
 // Handler function for when a project's "show more" is tapped

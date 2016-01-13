@@ -16,11 +16,14 @@ for (i=0; i<projectData.length; i++){
 for (var i in projects){
   // Using jQuery to identify the HTML section of projects
   // And adding a block of HTML for each project object
-  $('#projectsSection').append(projects[i].toHtml());
+  $('#home-section').append(projects[i].toHtml());
 };
 
+// Add event responders to the show more tags
+$('.showMore').on('click', showMoreHandler);
+
 // Delete the template project
-$('article#template').remove();
+// $('article#template').remove();
 
 // Update the background colors on the Projects
 determineBackgroundColor($('article.projectArticle'));
@@ -35,4 +38,4 @@ $('#categoryFilter').on('change', filterHandler);
 $('#mainNav').on('click', 'ul', navHandler);
 
 // Initially hide the about section
-$('#aboutSection').hide();
+$('#about-section').hide();
