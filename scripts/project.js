@@ -47,6 +47,80 @@ Project.prototype.toHtml = function(){
   $('#home-section').append(theCompiledHtml);
 };
 
+
+function retrieveDataFromSource(){
+
+  var pullRemoteDataBool = false;
+  var eTagValue = null;
+
+  // Always get the remote ETag
+  $.ajax({url:'data/projectData.json'}, {method:'HEAD'}).done(function(data, message , xhr){
+    eTagValue = xhr.getResponseHeader('ETag');
+  });
+
+  // Check if rawData and eTag exists locally
+  var localDataExistBool = false;
+  var localETagExistBool = false;
+  if (localStorage.rawData){localDataExistBool = true;}
+  if (localStorage.etag){ localETagExistBool = true;}
+
+
+  // If no local eTag exists, get it and save it
+  if (!localETagExistBool){
+    // Save eTag in cache
+    localStorage.setItem('eTag', eTagValue);
+  }
+
+
+  // Compare HEAD of data source with local storage
+
+  // Could be from local storage or server
+  if (localStorage.rawData && !ignoreLocalData){
+
+
+
+    // Load fresh data if local is older than data source
+
+    // Otherwise, use local data
+
+
+
+    console.log('using local data');
+
+    // Objectify the localStorage string
+    var dataObject = JSON.parse(localStorage.rawData);
+
+    arrayToReturn = [];
+    for (var thisItem in dataObject){
+      arrayToReturn.push(dataObject[thisItem]);
+    }
+    initProjectsPage(arrayToReturn);
+
+  }else{
+
+    $.ajax({url:'data/projectData.json'})
+    .done(function(thisItem){downloadSuccessful(thisItem);})
+    .fail(function(thisItem){downloadFailure(thisItem);});
+  }
+}
+
+function downloadSuccessful (dataObject){
+  // Save data to localStorage
+  localStorage.setItem('rawData', JSON.stringify(dataObject));
+
+  // Save the data in an array and refresh the page
+  arrayToReturn = [];
+  for (var thisItem in dataObject){
+    arrayToReturn.push(dataObject[thisItem]);
+  }
+  initProjectsPage(arrayToReturn);
+}
+
+function downloadFailure (dataObject){
+  $('#home-section').append('Total Failure');
+}
+
+
 // Handler function for when a project's "show more" is tapped
 function showMoreHandler(e){
   // Prevent the default action of the anchor tag
