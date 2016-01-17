@@ -1,6 +1,6 @@
 
 // Set to true for testing Ajax
-var ignoreLocalData = true;
+var ignoreLocalData = false;
 
 // Initialize an arry of project objects
 var projects = [];
@@ -12,4 +12,4 @@ $('#about-section').hide();
 $('#mainNav').on('click', 'ul', navHandler);
 
 // Load project data from source into an array
-retrieveDataFromSource();
+retrieveETagFromSource();

@@ -1,0 +1,54 @@
+
+/* Basic Text color */
+p, h1, h2, h3, li, footer {
+  color: black;
+}
+
+
+a:link {
+  color: blue;
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  text-decoration: none;
+}
+
+a:active {
+  color: red;
+  text-decoration: none;
+}
+
+/* Background */
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+div#centered {
+  background-color: rgb(220, 220, 215);
+}
+
+/* Navigation */
+nav {
+  background-color: rgb(120, 120, 140);
+}
+
+/* Sidebar */
+/*aside {
+  background-color: rgb(50, 200, 210);
+}*/
+
+/* Project entries */
+.alternateColor{
+  background-color: rgb(240, 240, 240);
+}
+
+.projectCategory{
+  color: rgb(180, 180, 180);
+}

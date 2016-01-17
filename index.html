@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/module.css">
+  <link rel="stylesheet" href="styles/state.css">
   <link rel="stylesheet" href="styles/theme.css">
   <meta name="viewport" content="width=device-width">
 
@@ -17,12 +18,13 @@
       <img src="images/{{imageMain}}"></img>
       {{/if}}
       <h1>{{title}}</h1>
-      <p class="projectCategory" data-category="{{category}}">Project type: {{category}}</p>
-      <p>{{projectDate}}</p>
-      <p>{{body}}</p>
+      <p class="posting-date"><em>{{projectDate}}</em></p>
+      <p class="width_constrained">{{body}}</p>
       {{#if this.additionalText}}
+      <p>...</p>
       <a id="anchor-{{key}}" class="showMore" href="">show more</a>
       {{/if}}
+      <p class="projectCategory" data-category="{{category}}">Project type: {{category}}</p>
     </article>
     {{/each}}
   </script>
@@ -37,7 +39,7 @@
         <div id="navigation-bar-menu">
           <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" /> -->
           <!-- <label class="icon-menu" for="nav-trigger"> -->
-            <img class="navigation-icon" src="styles/icons/001-home.svg"></img>
+          <img class="navigation-icon" src="styles/icons/001-home.svg"></img>
           <!-- </label> -->
         </div>
 
@@ -50,24 +52,29 @@
           </ul>
         </div>
 
-
         <header>
           <!-- Title goes here -->
-          <h1>Dave's Wonderful Blog</h1>
+          <h2>Dave's Wonderful Blog</h2>
           <!-- Subtitle goes here -->
-          <h2>A portfolio of projects</h2>
+          <h3>A portfolio of projects</h3>
         </header>
-
-
-        <div id="category-filter">
-          <select id="categoryFilter">
-            <option value="">__ Filter by category __</option>
-          </select>
-        </div>
       </nav>
 
+      <div id="category-filter">
+        <select id="categoryFilter">
+          <option value="">__ Filter by category __</option>
+        </select>
+      </div>
+
+
       <aside>
-        <p>this text is in aside</p>
+        <div>
+          <ul id="category-filter-list">
+            <li>Film</li>
+            <li>Productivity</li>
+            <li>Music</li>
+          </ul>
+        </div>
       </aside>
 
       <main>
@@ -91,9 +98,10 @@
         </section>
 
       </main>
+
       <footer>
         <hr />
-        Copyright 2016, Dave Hanagan
+          Copyright 2016, Dave Hanagan
       </footer>
     </div>
   </div>

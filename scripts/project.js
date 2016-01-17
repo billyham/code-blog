@@ -47,46 +47,11 @@ Project.prototype.toHtml = function(){
   $('#home-section').append(theCompiledHtml);
 };
 
+// If local data exists, load it immediately
+// Get remote ETag
+function retrieveETagFromSource(){
 
-function retrieveDataFromSource(){
-
-  var pullRemoteDataBool = false;
-  var eTagValue = null;
-
-  // Always get the remote ETag
-  $.ajax({url:'data/projectData.json'}, {method:'HEAD'}).done(function(data, message , xhr){
-    eTagValue = xhr.getResponseHeader('ETag');
-  });
-
-  // Check if rawData and eTag exists locally
-  var localDataExistBool = false;
-  var localETagExistBool = false;
-  if (localStorage.rawData){localDataExistBool = true;}
-  if (localStorage.etag){ localETagExistBool = true;}
-
-
-  // If no local eTag exists, get it and save it
-  if (!localETagExistBool){
-    // Save eTag in cache
-    localStorage.setItem('eTag', eTagValue);
-  }
-
-
-  // Compare HEAD of data source with local storage
-
-  // Could be from local storage or server
-  if (localStorage.rawData && !ignoreLocalData){
-
-
-
-    // Load fresh data if local is older than data source
-
-    // Otherwise, use local data
-
-
-
-    console.log('using local data');
-
+  if(localStorage.rawData && !ignoreLocalData){
     // Objectify the localStorage string
     var dataObject = JSON.parse(localStorage.rawData);
 
@@ -95,9 +60,47 @@ function retrieveDataFromSource(){
       arrayToReturn.push(dataObject[thisItem]);
     }
     initProjectsPage(arrayToReturn);
+  }
 
+  // Always get the remote ETag
+  $.ajax({url:'data/projectData.json'}, {method:'HEAD'}).done(function(data, message , xhr){
+    eTagValue = xhr.getResponseHeader('ETag');
+    retrieveDataFromSource(eTagValue);
+  });
+}
+
+// If (local ETag exists)
+//   If (remote Etag does NOT match local ETag),
+//     Get remote rawData, save ETag to local
+//   Else (if local data does NOT exist)
+//     Get remote rawData
+//   Otherwise exit with no action
+// Otherwise, get remote rawData, save ETag to local
+function retrieveDataFromSource(eTagValue){
+  if (localStorage.etag){
+    if (JSON.parse(localStorage.etag) !== eTagValue){
+      // Save the new eTag value into Local Storage
+      localStorage.setItem('etag', JSON.stringify(eTagValue));
+
+      // Download thew new Data, save it and display it
+      $.ajax({url:'data/projectData.json'})
+      .done(function(thisItem){downloadSuccessful(thisItem);})
+      .fail(function(thisItem){downloadFailure(thisItem);});
+
+    }else if(!localStorage.rawData){
+      // Download thew new Data, save it and display it
+      $.ajax({url:'data/projectData.json'})
+      .done(function(thisItem){downloadSuccessful(thisItem);})
+      .fail(function(thisItem){downloadFailure(thisItem);});
+
+    }else{
+      return;
+    }
   }else{
+    // Save the new eTag value into Local Storage
+    localStorage.setItem('etag', JSON.stringify(eTagValue));
 
+    // Download thew new Data, save it and display it
     $.ajax({url:'data/projectData.json'})
     .done(function(thisItem){downloadSuccessful(thisItem);})
     .fail(function(thisItem){downloadFailure(thisItem);});
@@ -105,6 +108,7 @@ function retrieveDataFromSource(){
 }
 
 function downloadSuccessful (dataObject){
+  console.log('retrieveDateFromSource gets data from the source');
   // Save data to localStorage
   localStorage.setItem('rawData', JSON.stringify(dataObject));
 
@@ -131,15 +135,19 @@ function showMoreHandler(e){
 
   // Determine if it should show more or less
   if ($(e.target).text() === 'show more'){
+    // Make sure body text is visible
+    $(e.target).prev().prev().addClass('show_despite_width');
     // The additional text
     var additionalText = $parentElement.attr('data-additionalText');
     // Add additional text to the preceding element
-    $(e.target).prev().after('<p>' + additionalText) + '</p>';
+    $(e.target).prev().html('<p>' + additionalText) + '</p>';
     // Change the <a> tag to show less
     $(e.target).text('show less');
   }else{
     // Remove the additional text
-    $(e.target).prev().remove();
+    $(e.target).prev().html('<p>...</p>');
+    // Allow body text to be invisible
+    $(e.target).prev().prev().removeClass('show_despite_width');
     // Change the <a> tag back to show more
     $(e.target).text('show more');
   }
