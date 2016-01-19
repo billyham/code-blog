@@ -11,17 +11,17 @@
   <meta name="viewport" content="width=device-width">
 
   <!-- HandleBars template for project -->
-  <script id="project-template" type="text/x-handlebars-template">
+  <script id="project_template" type="text/x-handlebars-template">
     {{#each project}}
     <article class="projectArticle" data-additionalText = "{{additionalText}}">
       {{#if this.imageMain}}
       <img src="images/{{imageMain}}"></img>
       {{/if}}
       <h1>{{title}}</h1>
-      <p class="posting-date"><em>{{projectDate}}</em></p>
+      <p class="posting_date"><em>{{projectDate}}</em></p>
       <p class="width_constrained">{{body}}</p>
       {{#if this.additionalText}}
-      <p>...</p>
+      <p class="ellipses">...</p>
       <a id="anchor-{{key}}" class="showMore" href="">show more</a>
       {{/if}}
       <p class="projectCategory" data-category="{{category}}">Project type: {{category}}</p>
@@ -34,20 +34,37 @@
   <div id="top">
     <div id="centered">
 
+
+
       <nav id="mainNav">
 
-        <div id="navigation-bar-menu">
-          <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" /> -->
-          <!-- <label class="icon-menu" for="nav-trigger"> -->
-          <img class="navigation-icon" src="styles/icons/001-home.svg"></img>
-          <!-- </label> -->
+
+        <div id="menu_wrapper">
+          <div id="navigation_bar_menu">
+            <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" /> -->
+            <!-- <label class="icon-menu" for="nav-trigger"> -->
+            <img class="navigation_icon" src="styles/icons/192-menu3.svg"></img>
+            <!-- </label> -->
+          </div>
+
+          <div id="drop_down_menu">
+            <ul>
+              <li id="homeNavLink"><a class="onDark" href="" data-nav="home">Home</a></li>
+              <li id="aboutNavLink"><a class="onDark" href="" data-nav="about">About</a></li>
+              <li><a class="onDark" href="https://github.com/billyham">GitHub</a></li>
+              <li><a class="onDark" href="https://twitter.com/DaveHanagan">Twitter</a></li>
+              <li id="close_menu_link">
+                <img class="navigation_icon" src="styles/icons/193-menu4.svg"></img>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div id="navigation-bar-links">
+        <div id="navigation_bar_links">
           <ul>
-            <li id="homeNavLink"><a href="" data-nav="home">Home</a></li>
-            <li id="aboutNavLink"><a href="" data-nav="about">About</a></li>
-            <li><a href="https://github.com/billyham">GitHub</a></li>
+            <li id="homeNavLink"><a href="" data-nav="home">Home</a><span> | </span></li>
+            <li id="aboutNavLink"><a href="" data-nav="about">About</a><span> | </span></li>
+            <li><a href="https://github.com/billyham">GitHub</a><span> | </span></li>
             <li><a href="https://twitter.com/DaveHanagan">Twitter</a></li>
           </ul>
         </div>
@@ -60,19 +77,18 @@
         </header>
       </nav>
 
-      <div id="category-filter">
+      <div id="category_filter">
         <select id="categoryFilter">
-          <option value="">__ Filter by category __</option>
+          <option value="">__Categories__</option>
         </select>
       </div>
 
 
       <aside>
         <div>
-          <ul id="category-filter-list">
-            <li>Film</li>
-            <li>Productivity</li>
-            <li>Music</li>
+          <ul id="category_filter_list">
+            <li><h4>Categories:</h4></li>
+            <li class="is_selected"><a>All</a></li>
           </ul>
         </div>
       </aside>

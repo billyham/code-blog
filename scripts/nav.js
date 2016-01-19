@@ -20,19 +20,43 @@ function populateFilters(){
       }
     });
     if (!hasOption){
+      // Add it the select form object
       $('#categoryFilter').append(optionValue);
+      // And add it to the sidebar list
+      $('#category_filter_list').append('<li><a>' + categoryValue + '</a></li');
     }
   });
 };
 
-// Handler for filtering Projects based on the Select form value
+// Select form element Responder for filtering Projects based on the Select form value
 function filterHandler(e){
-  $catFilter = $(e.target);
+  var selectionString = $(e.target).val();
+  // Contine with method below...
+  continueFilterSelection(selectionString);
+}
 
-  var selectionString = $catFilter.val();
+// Sidebar List element for responding to filtering projet by category
+function listFilterHandler(e){
+  var selectionString = $(e.target).text();
+  continueFilterSelection(selectionString);
+}
 
-  // If no value exists, show all projects and exit the function
+function continueFilterSelection(selectionString){
+  // If no value exists, assign is the "All" value
   if (!selectionString){
+    selectionString = 'All';
+  }
+
+  // Update selection in side filter list
+  $('#category_filter_list li:has(a)').each(function(){
+    $(this).removeClass('is_selected');
+    if ($(this).text() === selectionString){
+      $(this).addClass('is_selected');
+    }
+  });
+
+  // If no value exists, or the value is "All", show all projects and exit the function
+  if (selectionString === 'All'){
     $('article.projectArticle').show();
     determineBackgroundColor($('article.projectArticle'));
     return;
@@ -66,7 +90,7 @@ function filterHandler(e){
   });
 }
 
-// Handler for clicks on the nav links
+// Responder for clicks on the nav links
 function navHandler(e){
   $anchor = $(e.target);
   // Determine if tab content should change, otherwise allow the anchor tag's default action
@@ -76,19 +100,19 @@ function navHandler(e){
     var thisString = '#' + $anchor.data('nav') + '-section';
     $(thisString).show();
   }
+}
 
-// HA HA, this verbose code was replaced with above after code review. Thanks code review!
-  // if ($anchor.data('nav') === 'about'){
-  //   e.preventDefault();
-  //   // Show about section and Hide project Section
-  //   $('#home-section').hide();
-  //   $('#about-section').show();
-  // }else if($anchor.data('nav') === 'home'){
-  //   e.preventDefault();
-  //   // Show project section and hid about hide section
-  //   $('#about-section').hide();
-  //   $('#home-section').show();
-  // }else{
-  //   // For future navigation links
-  // };
+// Responder for taps on the nav menu to show and hide the links as a menu
+function dropDownMenuHandler(e) {
+  // Hide the menu icon
+  $('#navigation_bar_menu').hide();
+  // Show the drop down menu
+  $('#drop_down_menu').show();
+}
+
+function dismissDropDownMenuHandler() {
+  // Hide the menu icon
+  $('#drop_down_menu').hide();
+  // Show the drop down menu
+  $('#navigation_bar_menu').show();
 }

@@ -1,9 +1,7 @@
-
-/* Basic Text color */
+/* Text color */
 p, h1, h2, h3, li, footer {
   color: black;
 }
-
 
 a:link {
   color: blue;
@@ -25,13 +23,34 @@ a:active {
   text-decoration: none;
 }
 
+/* Dark background color for anchors*/
+.onDark:link{
+  color: white;
+}
+
+.onDark:visited {
+  color: white;
+}
+
+.onDark:hover {
+  color: red;
+}
+
+.onDark: active {
+  color: red;
+}
+
 /* Background */
 body {
   background-color: rgb(255, 255, 255);
 }
 
-div#centered {
+#centered {
   background-color: rgb(220, 220, 215);
+}
+
+#drop_down_menu {
+  background-color: rgb(50, 50, 50);
 }
 
 /* Navigation */

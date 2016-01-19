@@ -3,58 +3,37 @@ article.projectArticle{
   padding-top: .5em;
   padding-left: .5em;
   padding-right: .5em;
-  padding-bottom: 1.5em;
+  padding-bottom: .5em;
   margin-bottom: 0;
   margin-top: 0;
+  overflow: hidden;
 }
 
-h1 {
-  font-family: serif;
-  font-size: 160%;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-h2 {
-  font-family: sans-serif;
-  font-size: 150%;
-  padding-top: 1em;
-  margin-bottom: 0;
-}
-
-h3{
-  font-family: sans-serif;
-  padding-bottom: 1em;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-p {
-  /*margin-top: 0;*/
-  font-family: sans-serif;
-}
-
-a {
-  font-family: sans-serif;
-}
-
-.posting-date {
-  font-size: 90%;
-  margin-top: .5em;
-  margin-bottom: .5em;
-}
-/* Images*/
 img {
   min-width: 100%;
   max-width: 100%;
 }
 
-.projectCategory{
-  float: right;
-  font-size: 80%;
-  font-style: italic;
+.posting_date {
+  font-size: 90%;
+  margin-top: .5em;
+  margin-bottom: .5em;
 }
 
+.ellipses {
+  margin-bottom: .25em;
+  margin-top: 0;
+}
+
+.projectCategory{
+  font-size: 80%;
+  font-style: italic;
+  line-height: normal;
+  float: right;
+  margin-bottom: 0;
+}
+
+/* Text Hide and Show behaviour based on viewport size */
 .width_constrained {
   display: none;
 }
@@ -66,15 +45,15 @@ img {
 /* For screens larger than 480px*/
 @media all and (min-width:480px){
 
-.width_constrained {
-  display: block;
-}
-
-img {
+  img {
     min-width: 40%;
     max-width: 40%;
     margin-left: 1em;
     margin-bottom: 1em;
     float: right;
+  }
+
+  .width_constrained {
+    display: block;
   }
 }

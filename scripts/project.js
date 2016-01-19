@@ -22,7 +22,7 @@ Project.prototype.toHtml = function(){
   }
 
   // Get the project template
-  var projectTemplateScript = $('#project-template').html();
+  var projectTemplateScript = $('#project_template').html();
   // Compile the template
   var compiledTemplate = Handlebars.compile(projectTemplateScript);
   // Define the context

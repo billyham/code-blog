@@ -1,8 +1,11 @@
-
 /* Hide project body text when viewing on mobile*/
-/*.is_hidden {
+.is_hidden {
   display: none;
-}*/
+}
+
+.is_selected {
+  background-color: rgb(150, 150, 150);
+}
 
 /*.show_despite_width {
 

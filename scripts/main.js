@@ -9,7 +9,16 @@ var projects = [];
 $('#about-section').hide();
 
 // Add an event responder function for when a nav item is clicked
-$('#mainNav').on('click', 'ul', navHandler);
+$('#navigation_bar_links').on('click', 'ul', navHandler);
+
+// Add an event reponder for when the drop down menu is tapped
+$('#navigation_bar_menu').on('click', dropDownMenuHandler);
+
+// Add event responder for when teh drop down menu is dimissed
+$('#close_menu_link').on('click', dismissDropDownMenuHandler);
+
+// Start with menu hidden
+dismissDropDownMenuHandler();
 
 // Load project data from source into an array
 retrieveETagFromSource();

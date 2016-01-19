@@ -1,6 +1,12 @@
 
 function initProjectsPage (projectDataArray){
 
+  // Remove any existing project elements before loading view
+  $('#home-section').empty();
+
+  // Initialize an arry of project objects
+  var projects = [];
+
   // Sort the array of projectData based on the dateOfCreation
   projectDataArray.sort(function(date1,date2){
     return (new Date(date2.dateOfCreation) - new Date(date1.dateOfCreation));
@@ -31,6 +37,7 @@ function initProjectsPage (projectDataArray){
 
   // Add an event responder function for when the cateogry filter changes
   $('#categoryFilter').on('change', filterHandler);
+  $('#category_filter_list').on('click', 'a', listFilterHandler);
 
   // Add an event responder function for when a nav item is clicked
   $('#mainNav').on('click', 'ul', navHandler);
