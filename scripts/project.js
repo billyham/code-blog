@@ -51,7 +51,7 @@ Project.prototype.toHtml = function(){
 // Get remote ETag
 function retrieveETagFromSource(){
 
-  if(localStorage.rawData && !ignoreLocalData){
+  if(localStorage.rawData){
     // Objectify the localStorage string
     var dataObject = JSON.parse(localStorage.rawData);
 
