@@ -12,7 +12,7 @@
 
   <!-- HandleBars template for project -->
   <script id="project_template" type="text/x-handlebars-template">
-    {{#each project}}
+    <!-- {{#each project}} -->
     <article class="projectArticle" data-additionalText = "{{additionalText}}">
       {{#if this.imageMain}}
       <img src="images/{{imageMain}}"></img>
@@ -22,11 +22,11 @@
       <p class="width_constrained">{{body}}</p>
       {{#if this.additionalText}}
       <p class="ellipses">...</p>
-      <a id="anchor-{{key}}" class="showMore" href="">show more</a>
+      <a class="showMore" href="">show more</a>
       {{/if}}
       <p class="projectCategory" data-category="{{category}}">Project type: {{category}}</p>
     </article>
-    {{/each}}
+    <!-- {{/each}} -->
   </script>
 </head>
 
@@ -132,8 +132,8 @@
   <!-- The script for nav object -->
   <script src="scripts/nav.js" type="text/javascript"></script>
   <!-- The callback that loads all the data -->
-  <script src="scripts/initializeProject.js" type="text/javascript"></script>
-  <!-- The main javascript that will put things in motion -->
+  <script src="scripts/ProjectView.js" type="text/javascript"></script>
+  <!-- The main javascript that will put things in motion-->
   <script src="scripts/main.js" type="text/javascript"></script>
 
 </body>

@@ -7,7 +7,6 @@ function Project(dataObject){
   this.imageMain = dataObject.imageMain;
   this.dateOfCreation = dataObject.dateOfCreation;
   this.additionalText = dataObject.additionalText;
-  this.key = dataObject.key;
 };
 
 Project.prototype.toHtml = function(){
@@ -20,7 +19,7 @@ Project.prototype.toHtml = function(){
   }else{
     stringDate = 'Posted ' + intDate + ' days ago';
   }
-
+  console.log('inside the template');
   // Get the project template
   var projectTemplateScript = $('#project_template').html();
   // Compile the template
@@ -34,8 +33,7 @@ Project.prototype.toHtml = function(){
         body: this.body,
         imageMain: this.imageMain,
         additionalText: this.additionalText,
-        projectDate: stringDate,
-        key: this.key
+        projectDate: stringDate
       }
     ]
   };
@@ -51,7 +49,7 @@ Project.prototype.toHtml = function(){
 // Get remote ETag
 function retrieveETagFromSource(){
 
-  if(localStorage.rawData){
+  if (localStorage.rawData){
     // Objectify the localStorage string
     var dataObject = JSON.parse(localStorage.rawData);
 
@@ -59,7 +57,7 @@ function retrieveETagFromSource(){
     for (var thisItem in dataObject){
       arrayToReturn.push(dataObject[thisItem]);
     }
-    initProjectsPage(arrayToReturn);
+    ProjectView.initProjectsPage(arrayToReturn);
   }
 
   // Always get the remote ETag
@@ -87,7 +85,7 @@ function retrieveDataFromSource(eTagValue){
       .done(function(thisItem){downloadSuccessful(thisItem);})
       .fail(function(thisItem){downloadFailure(thisItem);});
 
-    }else if(!localStorage.rawData){
+    }else if (!localStorage.rawData){
       // Download thew new Data, save it and display it
       $.ajax({url:'data/projectData.json'})
       .done(function(thisItem){downloadSuccessful(thisItem);})
@@ -117,7 +115,7 @@ function downloadSuccessful (dataObject){
   for (var thisItem in dataObject){
     arrayToReturn.push(dataObject[thisItem]);
   }
-  initProjectsPage(arrayToReturn);
+  ProjectView.initProjectsPage(arrayToReturn);
 }
 
 function downloadFailure (dataObject){

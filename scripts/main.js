@@ -22,4 +22,5 @@
 
   // Load project data from source into an array
   retrieveETagFromSource();
+  
 }(window));
