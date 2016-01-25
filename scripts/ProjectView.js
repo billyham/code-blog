@@ -1,50 +1,44 @@
+(function(module){
 
-var ProjectView = (function(){
+  function initProjectsPage(projectDataArray){
 
-  return {
+    // Remove any existing project elements before loading view
+    $('#home-section').empty();
 
-    initProjectsPage: function(projectDataArray){
+    // Initialize an arry of project objects
+    var projects = [];
 
-      // Remove any existing project elements before loading view
-      $('#home-section').empty();
+    // Sort the array of projectData based on the dateOfCreation
+    projectDataArray.sort(function(date1,date2){
+      return (new Date(date2.dateOfCreation) - new Date(date1.dateOfCreation));
+    });
 
-      // Initialize an arry of project objects
-      var projects = [];
+    projectDataArray.forEach(function(element){
+      projects.push(new Project(element));
+    });
 
-      // Sort the array of projectData based on the dateOfCreation
-      projectDataArray.sort(function(date1,date2){
-        return (new Date(date2.dateOfCreation) - new Date(date1.dateOfCreation));
-      });
+    projects.forEach(function(element){
+      element.toHtml();
+    });
 
-      // Iterate through array of raw data and push a new project object in the array of projects
-      for (i=0; i<projectDataArray.length; i++){
-        projects.push(new Project(projectDataArray[i]));
-      }
+    // Add event responders to the show more tags
+    $('.showMore').on('click', showMoreHandler);
 
-      // Iterate through the projects array and create HTML text using the object data
-      for (var i in projects){
-        // And adding a block of HTML for each project object
-        projects[i].toHtml();
-      };
+    // Delete the template project
+    // $('article#template').remove();
 
-      // Add event responders to the show more tags
-      $('.showMore').on('click', showMoreHandler);
+    // Update the background colors on the Projects
+    determineBackgroundColor($('article.projectArticle'));
 
-      // Delete the template project
-      // $('article#template').remove();
+    // Populate the Category filter with categories as options
+    populateFilters();
 
-      // Update the background colors on the Projects
-      determineBackgroundColor($('article.projectArticle'));
+    // Add an event responder function for when the cateogry filter changes
+    $('#categoryFilter').on('change', filterHandler);
+    $('#category_filter_list').on('click', 'a', listFilterHandler);
 
-      // Populate the Category filter with categories as options
-      populateFilters();
-
-      // Add an event responder function for when the cateogry filter changes
-      $('#categoryFilter').on('change', filterHandler);
-      $('#category_filter_list').on('click', 'a', listFilterHandler);
-
-      // Add an event responder function for when a nav item is clicked
-      $('#mainNav').on('click', 'ul', navHandler);
-    }
-  };
-})();
+    // Add an event responder function for when a nav item is clicked
+    $('#mainNav').on('click', 'ul', navHandler);
+  }
+  module.initProjectsPage = initProjectsPage;
+}(window));
