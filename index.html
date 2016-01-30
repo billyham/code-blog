@@ -15,7 +15,7 @@
     <!-- {{#each project}} -->
     <article class="projectArticle" data-additionalText = "{{additionalText}}">
       {{#if this.imageMain}}
-      <img src="images/{{imageMain}}"></img>
+      <img class="projectimage" src="images/{{imageMain}}"></img>
       {{/if}}
       <h1>{{title}}</h1>
       <p class="posting_date"><em>{{projectDate}}</em></p>
@@ -64,8 +64,8 @@
           <ul>
             <li id="homeNavLink"><a href="" data-nav="home">Home</a><span> | </span></li>
             <li id="aboutNavLink"><a href="" data-nav="about">About</a><span> | </span></li>
-            <li><a href="https://github.com/billyham">GitHub</a><span> | </span></li>
-            <li><a href="https://twitter.com/DaveHanagan">Twitter</a></li>
+            <li><a href="https://github.com/billyham"><img class="icon" src="styles/icons/433-github.svg"></a><span> | </span></li>
+            <li><a href="https://twitter.com/DaveHanagan"><img class="icon" src="styles/icons/407-twitter.svg"></a></li>
           </ul>
         </div>
 
