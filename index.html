@@ -18,7 +18,8 @@
       <img class="projectimage" src="images/{{imageMain}}"></img>
       {{/if}}
       <h1>{{title}}</h1>
-      <p class="posting_date"><em>{{projectDate}}</em></p>
+      <p class="posting_date"><em><a href="#">{{projectDate}}
+      <span class="tooltip">{{readableDate}}</span></a></em></p>
       <p class="width_constrained">{{body}}</p>
       {{#if this.additionalText}}
       <p class="ellipses">...</p>

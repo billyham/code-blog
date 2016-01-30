@@ -10,6 +10,8 @@
 
     // Determine the relative Date
     var stringDate = ((new Date() - new Date(this.dateOfCreation))/60/60/24/1000);
+    var creationDate = new Date(this.dateOfCreation);
+    var readableDate = creationDate.toDateString();
     var intDate = parseInt(stringDate);
     if (intDate < 1){
       stringDate = 'New! Just posted';
@@ -30,7 +32,9 @@
           body: this.body,
           imageMain: this.imageMain,
           additionalText: this.additionalText,
-          projectDate: stringDate
+          projectDate: stringDate,
+          readableDate: readableDate
+
         }
       ]
     };
