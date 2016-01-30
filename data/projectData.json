@@ -5,7 +5,7 @@
     "imageMain": "transfer1.jpg",
     "body": "Using a modified HVX200 camera (described below), I created a system for the digital capture of images from Super 8 and 16mm film. Software made for a Mac is the controller, receiving a video stream from the camera and operating a film projector (formerly part of an optical printer). It uses an Arduino microcontroller to manage the communication between the Mac application and the film projector.",
     "dateOfCreation": "2015-12-02",
-    "additionalText": "I randomly walked into a carpet store and asked for a latte."
+    "additionalText": "Here is a video demonstarting the transfer in action: [[embed url=https://www.youtube.com/watch?v=vvz3zlWF6-g]]"
   },
   {
     "title": "Transistor Radio with guts replaced by iPod and Arduino",

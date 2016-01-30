@@ -63,6 +63,10 @@ nav {
   background-color: rgb(50, 200, 210);
 }*/
 
+.is_selected {
+  background-color: rgb(150, 150, 150);
+}
+
 /* Project entries */
 .alternateColor{
   background-color: rgb(240, 240, 240);

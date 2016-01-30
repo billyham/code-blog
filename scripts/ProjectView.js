@@ -24,9 +24,6 @@
     // Add event responders to the show more tags
     $('.showMore').on('click', showMoreHandler);
 
-    // Delete the template project
-    // $('article#template').remove();
-
     // Update the background colors on the Projects
     determineBackgroundColor($('article.projectArticle'));
 

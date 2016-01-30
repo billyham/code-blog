@@ -38,14 +38,13 @@
   // Sidebar List element for responding to filtering projet by category
   function listFilterHandler(e){
     var selectionString = $(e.target).text();
+    // Update the selection in the drop down list
+    $('#categoryFilter').val(selectionString);
+    // Contine with method below...
     continueFilterSelection(selectionString);
   }
 
   function continueFilterSelection(selectionString){
-    // If no value exists, assign is the "All" value
-    if (!selectionString){
-      selectionString = 'All';
-    }
 
     // Update selection in side filter list
     $('#category_filter_list li:has(a)').each(function(){
@@ -55,7 +54,7 @@
       }
     });
 
-    // If no value exists, or the value is "All", show all projects and exit the function
+    // If the value is "All", show all projects and exit the function
     if (selectionString === 'All'){
       $('article.projectArticle').show();
       determineBackgroundColor($('article.projectArticle'));
@@ -116,6 +115,7 @@
     // Show the drop down menu
     $('#navigation_bar_menu').show();
   }
+
   module.navHandler = navHandler;
   module.dropDownMenuHandler = dropDownMenuHandler;
   module.dismissDropDownMenuHandler = dismissDropDownMenuHandler;

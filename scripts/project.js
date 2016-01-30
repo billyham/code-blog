@@ -1,12 +1,9 @@
 (function(module){
   // Project constructor
   function Project(dataObject){
-    this.title = dataObject.title;
-    this.category = dataObject.category;
-    this.body = dataObject.body;
-    this.imageMain = dataObject.imageMain;
-    this.dateOfCreation = dataObject.dateOfCreation;
-    this.additionalText = dataObject.additionalText;
+    Object.keys(dataObject).forEach(function(e, index, array){
+      this[e]=dataObject[e];
+    }, this);
   };
 
   Project.prototype.toHtml = function(){
