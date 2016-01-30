@@ -9,6 +9,7 @@ article.projectArticle{
   overflow: hidden;
 }
 
+/*This is affecting the nav hamburger float*/
 img {
   min-width: 100%;
   max-width: 100%;

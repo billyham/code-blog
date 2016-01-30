@@ -109,6 +109,8 @@
     $('#drop_down_menu').show();
   }
 
+  // Slidetogle around here for the navigation animation
+
   function dismissDropDownMenuHandler() {
     // Hide the menu icon
     $('#drop_down_menu').hide();
