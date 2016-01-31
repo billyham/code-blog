@@ -116,6 +116,8 @@
     $('#navigation_bar_menu').show();
   }
 
+
+
   module.navHandler = navHandler;
   module.dropDownMenuHandler = dropDownMenuHandler;
   module.dismissDropDownMenuHandler = dismissDropDownMenuHandler;
