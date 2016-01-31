@@ -9,13 +9,13 @@ article.projectArticle{
   overflow: hidden;
 }
 
-img.projectimage {
+img.project_image {
   min-width: 100%;
   max-width: 100%;
 }
 img.icon {
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
 }
 
 .posting_date {
@@ -49,7 +49,7 @@ img.icon {
 /* For screens larger than 480px*/
 @media all and (min-width:480px){
 
-  img.projectimage {
+  img.project_image {
     min-width: 40%;
     max-width: 40%;
     margin-left: 1em;

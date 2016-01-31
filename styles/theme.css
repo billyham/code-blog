@@ -23,6 +23,15 @@ a:active {
   text-decoration: none;
 }
 
+/* Tool Tip anchor*/
+.tool_tip:link{
+  color: black;
+}
+
+.tool_tip:visited {
+  color: black;
+}
+
 /* Dark background color for anchors*/
 .onDark:link{
   color: white;

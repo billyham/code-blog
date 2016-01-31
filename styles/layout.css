@@ -85,8 +85,8 @@ header {
 
 .navigation_icon{
   float: right;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 .nav-trigger{
@@ -129,18 +129,10 @@ header {
   padding-left: 1em;
 }
 
-/*#menu-wrapper {
-  display: block;
-}*/
-
 #drop_down_menu {
   /*display: block;*/
   overflow: hidden;
   width: 100%;
-}
-
-#drop_down_menu ul {
-
 }
 
 #drop_down_menu li {
@@ -159,22 +151,6 @@ footer {
 /* For screens larger than 480px*/
 @media all and (min-width:480px){
 
-  /*#navigation_bar_menu {
-    display: none;
-  }
-
-  #drop_down_menu {
-    display: none;
-  }*/
-
-  #menu_wrapper {
-    display: none;
-  }
-
-  #navigation_bar_links {
-    display: block;
-    width: 290px;
-  }
 }
 
 /* For screens larger than 680px*/
@@ -190,6 +166,15 @@ footer {
     display: block;
     float: right;
     width: 25%;
+  }
+
+  #menu_wrapper {
+    display: none;
+  }
+
+  #navigation_bar_links {
+    display: block;
+    width: 290px;
   }
 
   #category_filter {

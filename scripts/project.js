@@ -7,18 +7,18 @@
   };
 
   Project.prototype.toHtml = function(){
-
-    // Determine the relative Date
-    var stringDate = ((new Date() - new Date(this.dateOfCreation))/60/60/24/1000);
+    // Createa a readable date
     var creationDate = new Date(this.dateOfCreation);
     var readableDate = creationDate.toDateString();
+
+    // Create a relative Date
+    var stringDate = ((new Date() - new Date(this.dateOfCreation))/60/60/24/1000);
     var intDate = parseInt(stringDate);
     if (intDate < 1){
       stringDate = 'New! Just posted';
     }else{
       stringDate = 'Posted ' + intDate + ' days ago';
     }
-    console.log('inside the template');
     // Get the project template
     var projectTemplateScript = $('#project_template').html();
     // Compile the template
@@ -34,7 +34,6 @@
           additionalText: this.additionalText,
           projectDate: stringDate,
           readableDate: readableDate
-
         }
       ]
     };

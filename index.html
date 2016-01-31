@@ -15,11 +15,11 @@
     <!-- {{#each project}} -->
     <article class="projectArticle" data-additionalText = "{{additionalText}}">
       {{#if this.imageMain}}
-      <img class="projectimage" src="images/{{imageMain}}"></img>
+      <img class="project_image" src="images/{{imageMain}}"></img>
       {{/if}}
       <h1>{{title}}</h1>
-      <p class="posting_date"><em><a href="#">{{projectDate}}
-      <span class="tooltip">{{readableDate}}</span></a></em></p>
+      <p class="posting_date"><em><a class="tool_tip" href="#">{{projectDate}}
+        <span>{{readableDate}}</span></a></em></p>
       <p class="width_constrained">{{body}}</p>
       {{#if this.additionalText}}
       <p class="ellipses">...</p>
@@ -66,7 +66,7 @@
             <li id="homeNavLink"><a href="" data-nav="home">Home</a><span> | </span></li>
             <li id="aboutNavLink"><a href="" data-nav="about">About</a><span> | </span></li>
             <li><a href="https://github.com/billyham"><img class="icon" src="styles/icons/433-github.svg"></a><span> | </span></li>
-            <li><a href="https://twitter.com/DaveHanagan"><img class="icon" src="styles/icons/407-twitter.svg"></a></li>
+           <li><a href="https://twitter.com/DaveHanagan"><img class="icon" src="styles/icons/407-twitter.svg"></a></li>
           </ul>
         </div>
 
@@ -118,7 +118,7 @@
 
       <footer>
         <hr />
-          Copyright 2016, Dave Hanagan
+        Copyright 2016, Dave Hanagan
       </footer>
     </div>
   </div>
