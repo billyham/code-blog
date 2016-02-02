@@ -6,7 +6,7 @@
   var projects = [];
 
   // Initially hide the about section
-  $('#about-section').hide();
+  $('#about_section').hide();
 
   // Add an event responder function for when a nav item is clicked
   $('#navigation_bar_links').on('click', 'ul', navHandler);

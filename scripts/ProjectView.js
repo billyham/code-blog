@@ -3,7 +3,7 @@
   function initProjectsPage(projectDataArray){
 
     // Remove any existing project elements before loading view
-    $('#home-section').empty();
+    $('#home_section').empty();
 
     // Initialize an arry of project objects
     var projects = [];
@@ -17,9 +17,17 @@
       projects.push(new Project(element));
     });
 
-    projects.forEach(function(element){
-      element.toHtml();
+    // Turn the array of project objects into DOM objects
+    projects.map(function(element){
+      return element.toHtml();
+    })
+    .forEach(function(currentElement){
+      $('#home_section').append(currentElement);
     });
+
+    // Tally of total words and print in footer
+    var totalWordCount = tallyWordCount(projects);
+    $('#wordCount').append(totalWordCount);
 
     // Add event responders to the show more tags
     $('.showMore').on('click', showMoreHandler);
@@ -41,7 +49,17 @@
     $('.tool_tip').on('click', function (e){
       e.preventDefault();
     });
-
   }
+
+  function tallyWordCount(arrayOfProjects){
+    var total = arrayOfProjects.map(function(element){
+      return element.wordCount();
+    })
+    .reduce(function(a,b){
+      return a + b;
+    },0);
+    return total;
+  };
+
   module.initProjectsPage = initProjectsPage;
 }(window));

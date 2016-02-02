@@ -45,7 +45,6 @@
   }
 
   function continueFilterSelection(selectionString){
-
     // Update selection in side filter list
     $('#category_filter_list li:has(a)').each(function(){
       $(this).removeClass('is_selected');
@@ -53,30 +52,24 @@
         $(this).addClass('is_selected');
       }
     });
-
     // If the value is "All", show all projects and exit the function
     if (selectionString === 'All'){
       $('article.projectArticle').show();
       determineBackgroundColor($('article.projectArticle'));
       return;
     }
-
     // Start by hiding all projects
     $('article.projectArticle').hide();
-
     // Integer to keep track of odds and events
     var shouldBeAlternateColor = true;
 
     // For any project witih a matching cateogry, show it
     $('article.projectArticle').each(function(){
-
       var thisCategory = $(this).find('.projectCategory').data('category');
 
       if (thisCategory === selectionString){
-
         // Show this project
         $(this).show();
-
         // Alternate background colors
         if (shouldBeAlternateColor){
           shouldBeAlternateColor= false;
@@ -96,7 +89,7 @@
     if ($anchor.data('nav')){
       e.preventDefault();
       $('.tab-content').hide();
-      var thisString = '#' + $anchor.data('nav') + '-section';
+      var thisString = '#' + $anchor.data('nav') + '_section';
       $(thisString).show();
     }
   }
@@ -115,8 +108,6 @@
     // Show the drop down menu
     $('#navigation_bar_menu').show();
   }
-
-
 
   module.navHandler = navHandler;
   module.dropDownMenuHandler = dropDownMenuHandler;

@@ -10,7 +10,6 @@
     // Createa a readable date
     var creationDate = new Date(this.dateOfCreation);
     var readableDate = creationDate.toDateString();
-
     // Create a relative Date
     var stringDate = ((new Date() - new Date(this.dateOfCreation))/60/60/24/1000);
     var intDate = parseInt(stringDate);
@@ -37,12 +36,21 @@
         }
       ]
     };
-
     // Add the data to the template
     var theCompiledHtml = compiledTemplate(context);
+    this.wordCount();
+    return theCompiledHtml;
+  };
 
-    // Add the HTML to the package
-    $('#home-section').append(theCompiledHtml);
+  // Calculate total number of words in Project body and additionalText
+  Project.prototype.wordCount = function(){
+    var wordBodyCount = this.body.split(' ');
+    var wordAdditionalCount = this.additionalText.split(' ');
+    return wordBodyCount.length + wordAdditionalCount.length;
+  };
+
+  Project.prototype.charCount = function(){
+    return this.body.length + this.additionalText.length;
   };
 
   // If local data exists, load it immediately
@@ -119,7 +127,7 @@
   }
 
   function downloadFailure (dataObject){
-    $('#home-section').append('Total Failure');
+    $('#home_section').append('Total Failure');
   }
 
 
@@ -153,7 +161,6 @@
 
   // Hand this a set of project article elements in order to set background color on them
   function determineBackgroundColor($projectArticle){
-
     // Integer to keep track of odds and events
     var shouldBeAlternateColor = true;
 
@@ -168,6 +175,7 @@
       }
     });
   }
+
   module.retrieveETagFromSource = retrieveETagFromSource;
   module.Project = Project;
   module.showMoreHandler = showMoreHandler;
