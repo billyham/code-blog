@@ -42,8 +42,8 @@
     $('#categoryFilter').on('change', filterHandler);
     $('#category_filter_list').on('click', 'a', listFilterHandler);
 
-    // Add an event responder function for when a nav item is clicked
-    $('#mainNav').on('click', 'ul', navHandler);
+    // __ Replaced with routing __
+    // $('#mainNav').on('click', 'ul', navHandler);
 
     // Publish date is an anchor to show a pop up window. Suppress the click action
     $('.tool_tip').on('click', function (e){

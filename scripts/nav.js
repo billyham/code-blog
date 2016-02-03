@@ -83,16 +83,16 @@
   }
 
   // Responder for clicks on the nav links
-  function navHandler(e){
-    $anchor = $(e.target);
-    // Determine if tab content should change, otherwise allow the anchor tag's default action
-    if ($anchor.data('nav')){
-      e.preventDefault();
-      $('.tab-content').hide();
-      var thisString = '#' + $anchor.data('nav') + '_section';
-      $(thisString).show();
-    }
-  }
+  // function navHandler(e){
+  //   $anchor = $(e.target);
+  //   // Determine if tab content should change, otherwise allow the anchor tag's default action
+  //   if ($anchor.data('nav')){
+  //     e.preventDefault();
+  //     $('.tab-content').hide();
+  //     var thisString = '#' + $anchor.data('nav') + '_section';
+  //     $(thisString).show();
+  //   }
+  // }
 
   // Responder for taps on the nav menu to show and hide the links as a menu
   function dropDownMenuHandler(e) {
@@ -109,7 +109,8 @@
     $('#navigation_bar_menu').show();
   }
 
-  module.navHandler = navHandler;
+
+  // module.navHandler = navHandler;
   module.dropDownMenuHandler = dropDownMenuHandler;
   module.dismissDropDownMenuHandler = dismissDropDownMenuHandler;
   module.populateFilters = populateFilters;
