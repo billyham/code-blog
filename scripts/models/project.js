@@ -53,6 +53,16 @@
     return this.body.length + this.additionalText.length;
   };
 
+  function tallyWordCount(arrayOfProjects){
+    var total = arrayOfProjects.map(function(element){
+      return element.wordCount();
+    })
+    .reduce(function(a,b){
+      return a + b;
+    },0);
+    return total;
+  };
+
   // If local data exists, load it immediately
   // Get remote ETag
   function retrieveETagFromSource(){
@@ -127,57 +137,15 @@
   }
 
   function downloadFailure (dataObject){
-    $('#home_section').append('Total Failure');
+    // Dump the ETag in local storage or it will cache the failure!!!
+    // __ But this causes some strange errors...
+    // localStorage.setItem('etag', 'badData');
+
+    window.location.replace('/failure');
+
   }
 
-
-  // Handler function for when a project's "show more" is tapped
-  function showMoreHandler(e){
-    // Prevent the default action of the anchor tag
-    e.preventDefault();
-
-    // Cache the parent element
-    $parentElement = $(e.target).parent();
-
-    // Determine if it should show more or less
-    if ($(e.target).text() === 'show more'){
-      // Make sure body text is visible
-      $(e.target).prev().prev().addClass('show_despite_width');
-      // The additional text
-      var additionalText = $parentElement.attr('data-additionalText');
-      // Add additional text to the preceding element
-      $(e.target).prev().html('<p>' + additionalText) + '</p>';
-      // Change the <a> tag to show less
-      $(e.target).text('show less');
-    }else{
-      // Remove the additional text
-      $(e.target).prev().html('<p>...</p>');
-      // Allow body text to be invisible
-      $(e.target).prev().prev().removeClass('show_despite_width');
-      // Change the <a> tag back to show more
-      $(e.target).text('show more');
-    }
-  };
-
-  // Hand this a set of project article elements in order to set background color on them
-  function determineBackgroundColor($projectArticle){
-    // Integer to keep track of odds and events
-    var shouldBeAlternateColor = true;
-
-    $projectArticle.each(function(){
-      // Alternate background colors
-      if (shouldBeAlternateColor){
-        shouldBeAlternateColor= false;
-        $(this).addClass('alternateColor');
-      }else{
-        shouldBeAlternateColor = true;
-        $(this).removeClass('alternateColor');
-      }
-    });
-  }
-
+  module.tallyWordCount = tallyWordCount;
   module.retrieveETagFromSource = retrieveETagFromSource;
   module.Project = Project;
-  module.showMoreHandler = showMoreHandler;
-  module.determineBackgroundColor = determineBackgroundColor;
 }(window));

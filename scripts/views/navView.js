@@ -82,18 +82,6 @@
     });
   }
 
-  // Responder for clicks on the nav links
-  // function navHandler(e){
-  //   $anchor = $(e.target);
-  //   // Determine if tab content should change, otherwise allow the anchor tag's default action
-  //   if ($anchor.data('nav')){
-  //     e.preventDefault();
-  //     $('.tab-content').hide();
-  //     var thisString = '#' + $anchor.data('nav') + '_section';
-  //     $(thisString).show();
-  //   }
-  // }
-
   // Responder for taps on the nav menu to show and hide the links as a menu
   function dropDownMenuHandler(e) {
     // Hide the menu icon
@@ -109,6 +97,14 @@
     $('#navigation_bar_menu').show();
   }
 
+  // Add an event reponder for when the drop down menu is tapped
+  $('#navigation_bar_menu').on('click', dropDownMenuHandler);
+
+  // Add event responder for when the drop down menu is dimissed
+  $('#close_menu_link').on('click', dismissDropDownMenuHandler);
+
+  // Start with menu hidden
+  dismissDropDownMenuHandler();
 
   // module.navHandler = navHandler;
   module.dropDownMenuHandler = dropDownMenuHandler;
