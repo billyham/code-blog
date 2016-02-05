@@ -2,6 +2,7 @@
 .is_hidden {
   display: none;
 }
+
 a span {
   display: none;
   position: absolute;
@@ -13,5 +14,5 @@ a span {
 
 a:hover span {
   display: block;
-  background-color: yellow;
+  background-color: rgb(150, 150, 150);
 }
