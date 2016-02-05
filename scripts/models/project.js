@@ -32,7 +32,8 @@
           imageMain: this.imageMain,
           additionalText: this.additionalText,
           projectDate: stringDate,
-          readableDate: readableDate
+          readableDate: readableDate,
+          gitHubName: this.gitHubName
         }
       ]
     };
