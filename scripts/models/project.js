@@ -30,7 +30,7 @@
           category: this.category,
           body: this.body,
           imageMain: this.imageMain,
-          additionalText: this.additionalText,
+          additionalText: marked(this.additionalText),
           projectDate: stringDate,
           readableDate: readableDate,
           gitHubName: this.gitHubName
