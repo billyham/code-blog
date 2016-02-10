@@ -12,9 +12,9 @@
     gitHubProjects.array = [];
 
     $.ajax({
-      url: 'https://api.github.com/users/billyham/repos',
-      type: 'GET',
-      headers: {'Authorization': 'token '+ githubToken},
+      url: 'github/users/billyham/repos' +
+            '?per_page=100' +
+            '&sort=updated',
       success:function(data){
         gitHubProjects.array = data
         .filter(function(element){
