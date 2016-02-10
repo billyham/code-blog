@@ -1,5 +1,4 @@
 (function(module){
-
   function initProjectsPage(projectDataArray){
 
     // Remove any existing project elements before loading view
