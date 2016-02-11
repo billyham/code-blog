@@ -129,6 +129,15 @@ header {
   padding-left: 1em;
 }
 
+#github_projects{
+    padding-left: 1em;
+}
+
+#github_projects li{
+  list-style-type: none;
+  padding-bottom: 1em;
+}
+
 #drop_down_menu {
   /*display: block;*/
   overflow: hidden;
@@ -147,6 +156,9 @@ footer {
   padding-bottom: 2em;
 }
 
+.icon-inline{
+  margin-left: .5em;
+}
 
 /* For screens larger than 480px*/
 @media all and (min-width:480px){
