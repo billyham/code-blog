@@ -17,7 +17,10 @@
     // Fetch github projects and display them
     // Provide a repoView function as a callback
 
-    githubProjectsView.displayGHProjectsInHome(ctx.arrayOfGHProjects);
+    // Error handling for when arrayOfGHProjects is null
+    if (ctx.arrayOfGHProjects){
+      githubProjectsView.displayGHProjectsInHome(ctx.arrayOfGHProjects);
+    };
   };
 
   projectController.loadAllProjects = function(ctx, next){
@@ -28,6 +31,13 @@
     });
   };
 
+  projectController.loadByCategory = function(ctx, next){
+    retrieveDataFilteredByCategory(ctx.params.categoryName, function(arrayParameter){
+      ctx.arrayOfProjects = arrayParameter;
+      next();
+    });
+
+  };
 
   module.projectController = projectController;
 })(window);

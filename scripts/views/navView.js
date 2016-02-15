@@ -52,34 +52,46 @@
         $(this).addClass('is_selected');
       }
     });
-    // If the value is "All", show all projects and exit the function
+
+
     if (selectionString === 'All'){
-      $('article.projectArticle').show();
-      determineBackgroundColor($('article.projectArticle'));
-      return;
+      page('/');
+    }else{
+      page('/category/' + selectionString);
     }
-    // Start by hiding all projects
-    $('article.projectArticle').hide();
-    // Integer to keep track of odds and events
-    var shouldBeAlternateColor = true;
 
-    // For any project witih a matching cateogry, show it
-    $('article.projectArticle').each(function(){
-      var thisCategory = $(this).find('.projectCategory').data('category');
+    return;
 
-      if (thisCategory === selectionString){
-        // Show this project
-        $(this).show();
-        // Alternate background colors
-        if (shouldBeAlternateColor){
-          shouldBeAlternateColor= false;
-          $(this).addClass('alternateColor');
-        }else{
-          shouldBeAlternateColor = true;
-          $(this).removeClass('alternateColor');
-        }
-      };
-    });
+
+
+    // // If the value is "All", show all projects and exit the function
+    // if (selectionString === 'All'){
+    //   $('article.projectArticle').show();
+    //   determineBackgroundColor($('article.projectArticle'));
+    //   return;
+    // }
+    // // Start by hiding all projects
+    // $('article.projectArticle').hide();
+    // // Integer to keep track of odds and events
+    // var shouldBeAlternateColor = true;
+    //
+    // // For any project witih a matching cateogry, show it
+    // $('article.projectArticle').each(function(){
+    //   var thisCategory = $(this).find('.projectCategory').data('category');
+    //
+    //   if (thisCategory === selectionString){
+    //     // Show this project
+    //     $(this).show();
+    //     // Alternate background colors
+    //     if (shouldBeAlternateColor){
+    //       shouldBeAlternateColor= false;
+    //       $(this).addClass('alternateColor');
+    //     }else{
+    //       shouldBeAlternateColor = true;
+    //       $(this).removeClass('alternateColor');
+    //     }
+    //   };
+    // });
   }
 
   // Responder for taps on the nav menu to show and hide the links as a menu

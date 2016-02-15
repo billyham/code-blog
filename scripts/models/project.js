@@ -79,11 +79,15 @@
     if (localStorage.rawData){
       // Objectify the localStorage string
       var dataObject = JSON.parse(localStorage.rawData);
-      callback(dataObject);
+      var newArray = [];
+      dataObject.forEach(function(element){
+        newArray.push(element);
+      });
+      callback(newArray);
     }
 
     // Always get the remote ETag
-    $.ajax({url:'data/projectData.json'}, {method:'HEAD'}).done(function(data, message , xhr){
+    $.ajax({url:'/data/projectData.json'}, {method:'HEAD'}).done(function(data, message , xhr){
       eTagValue = xhr.getResponseHeader('ETag');
       retrieveDataFromSource(eTagValue, callback);
     });
@@ -96,13 +100,13 @@
         localStorage.setItem('etag', JSON.stringify(eTagValue));
 
         // Download thew new Data, save it and display it
-        $.ajax({url:'data/projectData.json'})
+        $.ajax({url:'/data/projectData.json'})
         .done(function(thisItem){downloadSuccessful(thisItem, callback);})
         .fail(function(thisItem){downloadFailure(thisItem, callback);});
 
       }else if (!localStorage.rawData){
         // Download thew new Data, save it and display it
-        $.ajax({url:'data/projectData.json'})
+        $.ajax({url:'/data/projectData.json'})
         .done(function(thisItem){downloadSuccessful(thisItem, callback);})
         .fail(function(thisItem){downloadFailure(thisItem, callback);});
 
@@ -114,7 +118,7 @@
       localStorage.setItem('etag', JSON.stringify(eTagValue));
       // Download thew new Data, save it and display it
       $.ajax({
-        url:'data/projectData.json',
+        url:'/data/projectData.json',
         success:function(data){
           downloadSuccessful(data, callback);
         },
@@ -128,7 +132,11 @@
     console.log('retrieveDateFromSource gets data from the source');
     // Save data to localStorage
     localStorage.setItem('rawData', JSON.stringify(dataObject));
-    callback(dataObject);
+    var newArray = [];
+    dataObject.forEach(function(element){
+      newArray.push(element);
+    });
+    callback(newArray);
   }
 
   function downloadFailure (dataObject, callback){
@@ -136,12 +144,23 @@
     var failObject = {badData: 'Bad Data'};
     localStorage.setItem('etag', JSON.stringify(failObject));
 
-    // console.log('downloadFailure fires');
+    console.log('downloadFailure fires');
     var emptyArray = [];
     callback(emptyArray);
   }
 
+  function retrieveDataFilteredByCategory(category, callback){
+    retrieveETagFromSource(function(rawArray){
+      var newArray = rawArray.filter(function(element){
+        return element.category === category;
+      });
+      callback(newArray);
+    });
+
+  }
+
   module.tallyWordCount = tallyWordCount;
   module.retrieveETagFromSource = retrieveETagFromSource;
+  module.retrieveDataFilteredByCategory = retrieveDataFilteredByCategory;
   module.Project = Project;
 }(window));

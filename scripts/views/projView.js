@@ -26,6 +26,7 @@
 
     // Tally of total words and print in footer
     var totalWordCount = tallyWordCount(projects);
+    $('#wordCount').empty();
     $('#wordCount').append(totalWordCount);
 
     // Add event responders to the show more tags
@@ -38,8 +39,8 @@
     populateFilters();
 
     // Add an event responder function for when the cateogry filter changes
-    $('#categoryFilter').on('change', filterHandler);
-    $('#category_filter_list').on('click', 'a', listFilterHandler);
+    $('#categoryFilter').one('change', filterHandler);
+    $('#category_filter_list').one('click', 'a', listFilterHandler);
 
     // __ Replaced with routing __
     // $('#mainNav').on('click', 'ul', navHandler);

@@ -13,4 +13,10 @@ page('/failure',
   failureController.index
 );
 
+page('/category/:categoryName',
+  projectController.loadByCategory,
+  projectController.index
+);
+
+
 page();

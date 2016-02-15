@@ -7,7 +7,7 @@
     // run callback (a repoView method that displays the array data)
 
     $.ajax({
-      url: 'github/users/billyham/repos' +
+      url: '/github/users/billyham/repos' +
             '?per_page=100' +
             '&sort=updated',
       success:function(data){
