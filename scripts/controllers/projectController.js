@@ -1,18 +1,33 @@
 (function(module){
   var projectController = {};
 
-  var projects = [];
-  retrieveETagFromSource();
+  projectController.index = function(ctx){
+    // Evaluate the array. If empty, show error 404 page
+    if (ctx.arrayOfProjects.length > 0){
+      initProjectsPage(ctx.arrayOfProjects);
+    } else {
+      page.redirect('/failure');
+      return;
+    }
 
-  projectController.index = function(){
     $('#filter_wrapper').show();
     $('.tab-content').hide();
     $('#home_section').show();
 
     // Fetch github projects and display them
     // Provide a repoView function as a callback
-    gitHubProjects.fetchGitHubProjects(githubProjectsView.displayGHProjectsInHome);
+
+    githubProjectsView.displayGHProjectsInHome(ctx.arrayOfGHProjects);
   };
+
+  projectController.loadAllProjects = function(ctx, next){
+    retrieveETagFromSource(function(arrayParameter){
+      console.log('this is the array length: ' + arrayParameter.length);
+      ctx.arrayOfProjects = arrayParameter;
+      next();
+    });
+  };
+
 
   module.projectController = projectController;
 })(window);

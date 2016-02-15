@@ -1,5 +1,16 @@
-page('/', projectController.index);
-page('/about', aboutController.index);
-page('/failure', failureController.index);
+page('/',
+  projectController.loadAllProjects,
+  aboutController.loadGHProjects,
+  projectController.index
+);
+
+page('/about',
+  aboutController.loadGHProjects,
+  aboutController.index
+);
+
+page('/failure',
+  failureController.index
+);
 
 page();

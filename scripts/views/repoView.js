@@ -17,17 +17,17 @@
     );
   };
 
-  githubProjectsView.displayGHProjectsInAbout = function(){
+  githubProjectsView.displayGHProjectsInAbout = function(arrayParameter){
     // Remove any existing li elements
     $('#github_projects').empty();
     // Append HTML to the id, append can take an array
-    $('#github_projects').append(gitHubProjects.array.map(function(element){
+    $('#github_projects').append(arrayParameter.map(function(element){
       return renderToList(element);
     }));
   };
 
-  githubProjectsView.displayGHProjectsInHome = function() {
-    gitHubProjects.array.forEach(function(element){
+  githubProjectsView.displayGHProjectsInHome = function(arrayParameter) {
+    arrayParameter.forEach(function(element){
       renderToTag(element);
     });
   };

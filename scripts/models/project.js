@@ -64,36 +64,32 @@
     return total;
   };
 
-  // If local data exists, load it immediately
-  // Get remote ETag
-  function retrieveETagFromSource(){
+  // ____This is what happens in the following methods____
+  // If (local data exists): load it immediately
+  // Get the remote ETag
+  // If (local ETag exists)
+  //   If (remote Etag does NOT match local ETag),
+  //     Get remote rawData, save ETag to local
+  //   Else If (local data does NOT exist)
+  //     Get remote rawData
+  //   Else: exit with no action
+  // Else (i.e., no local ETag exists): get remote rawData, save ETag to local
+  function retrieveETagFromSource(callback){
 
     if (localStorage.rawData){
       // Objectify the localStorage string
       var dataObject = JSON.parse(localStorage.rawData);
-
-      arrayToReturn = [];
-      dataObject.forEach(function(element){
-        arrayToReturn.push(element);
-      });
-      initProjectsPage(arrayToReturn);
+      callback(dataObject);
     }
 
     // Always get the remote ETag
     $.ajax({url:'data/projectData.json'}, {method:'HEAD'}).done(function(data, message , xhr){
       eTagValue = xhr.getResponseHeader('ETag');
-      retrieveDataFromSource(eTagValue);
+      retrieveDataFromSource(eTagValue, callback);
     });
   }
 
-  // If (local ETag exists)
-  //   If (remote Etag does NOT match local ETag),
-  //     Get remote rawData, save ETag to local
-  //   Else (if local data does NOT exist)
-  //     Get remote rawData
-  //   Otherwise exit with no action
-  // Otherwise, get remote rawData, save ETag to local
-  function retrieveDataFromSource(eTagValue){
+  function retrieveDataFromSource(eTagValue, callback){
     if (localStorage.etag){
       if (JSON.parse(localStorage.etag) !== eTagValue){
         // Save the new eTag value into Local Storage
@@ -101,14 +97,14 @@
 
         // Download thew new Data, save it and display it
         $.ajax({url:'data/projectData.json'})
-        .done(function(thisItem){downloadSuccessful(thisItem);})
-        .fail(function(thisItem){downloadFailure(thisItem);});
+        .done(function(thisItem){downloadSuccessful(thisItem, callback);})
+        .fail(function(thisItem){downloadFailure(thisItem, callback);});
 
       }else if (!localStorage.rawData){
         // Download thew new Data, save it and display it
         $.ajax({url:'data/projectData.json'})
-        .done(function(thisItem){downloadSuccessful(thisItem);})
-        .fail(function(thisItem){downloadFailure(thisItem);});
+        .done(function(thisItem){downloadSuccessful(thisItem, callback);})
+        .fail(function(thisItem){downloadFailure(thisItem, callback);});
 
       }else{
         return;
@@ -116,34 +112,33 @@
     }else{
       // Save the new eTag value into Local Storage
       localStorage.setItem('etag', JSON.stringify(eTagValue));
-
       // Download thew new Data, save it and display it
-      $.ajax({url:'data/projectData.json'})
-      .done(function(thisItem){downloadSuccessful(thisItem);})
-      .fail(function(thisItem){downloadFailure(thisItem);});
+      $.ajax({
+        url:'data/projectData.json',
+        success:function(data){
+          downloadSuccessful(data, callback);
+        },
+        error:function(xhr, textStatus, errorThrown){
+          downloadFailure(textStatus, callback);
+        }});
     }
   }
 
-  function downloadSuccessful (dataObject){
+  function downloadSuccessful (dataObject, callback){
     console.log('retrieveDateFromSource gets data from the source');
     // Save data to localStorage
     localStorage.setItem('rawData', JSON.stringify(dataObject));
-
-    // Save the data in an array and refresh the page
-    arrayToReturn = [];
-    dataObject.forEach(function(element){
-      arrayToReturn.push(element);
-    });
-    initProjectsPage(arrayToReturn);
+    callback(dataObject);
   }
 
-  function downloadFailure (dataObject){
+  function downloadFailure (dataObject, callback){
     // Dump the ETag in local storage or it will cache the failure!!!
-    // __ But this causes some strange errors...
-    // localStorage.setItem('etag', 'badData');
+    var failObject = {badData: 'Bad Data'};
+    localStorage.setItem('etag', JSON.stringify(failObject));
 
-    window.location.replace('/failure');
-
+    // console.log('downloadFailure fires');
+    var emptyArray = [];
+    callback(emptyArray);
   }
 
   module.tallyWordCount = tallyWordCount;
