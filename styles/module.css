@@ -37,6 +37,12 @@ img.icon {
   margin-bottom: 0;
 }
 
+/* For About page */
+#about_section {
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
 /* Text Hide and Show behaviour based on viewport size */
 .width_constrained {
   display: none;
