@@ -45,7 +45,6 @@
   }
 
   function continueFilterSelection(selectionString){
-
     // Update selection in side filter list
     $('#category_filter_list li:has(a)').each(function(){
       $(this).removeClass('is_selected');
@@ -54,51 +53,45 @@
       }
     });
 
-    // If the value is "All", show all projects and exit the function
+
     if (selectionString === 'All'){
-      $('article.projectArticle').show();
-      determineBackgroundColor($('article.projectArticle'));
-      return;
+      page('/');
+    }else{
+      page('/category/' + selectionString);
     }
 
-    // Start by hiding all projects
-    $('article.projectArticle').hide();
+    return;
 
-    // Integer to keep track of odds and events
-    var shouldBeAlternateColor = true;
 
-    // For any project witih a matching cateogry, show it
-    $('article.projectArticle').each(function(){
 
-      var thisCategory = $(this).find('.projectCategory').data('category');
-
-      if (thisCategory === selectionString){
-
-        // Show this project
-        $(this).show();
-
-        // Alternate background colors
-        if (shouldBeAlternateColor){
-          shouldBeAlternateColor= false;
-          $(this).addClass('alternateColor');
-        }else{
-          shouldBeAlternateColor = true;
-          $(this).removeClass('alternateColor');
-        }
-      };
-    });
-  }
-
-  // Responder for clicks on the nav links
-  function navHandler(e){
-    $anchor = $(e.target);
-    // Determine if tab content should change, otherwise allow the anchor tag's default action
-    if ($anchor.data('nav')){
-      e.preventDefault();
-      $('.tab-content').hide();
-      var thisString = '#' + $anchor.data('nav') + '-section';
-      $(thisString).show();
-    }
+    // // If the value is "All", show all projects and exit the function
+    // if (selectionString === 'All'){
+    //   $('article.projectArticle').show();
+    //   determineBackgroundColor($('article.projectArticle'));
+    //   return;
+    // }
+    // // Start by hiding all projects
+    // $('article.projectArticle').hide();
+    // // Integer to keep track of odds and events
+    // var shouldBeAlternateColor = true;
+    //
+    // // For any project witih a matching cateogry, show it
+    // $('article.projectArticle').each(function(){
+    //   var thisCategory = $(this).find('.projectCategory').data('category');
+    //
+    //   if (thisCategory === selectionString){
+    //     // Show this project
+    //     $(this).show();
+    //     // Alternate background colors
+    //     if (shouldBeAlternateColor){
+    //       shouldBeAlternateColor= false;
+    //       $(this).addClass('alternateColor');
+    //     }else{
+    //       shouldBeAlternateColor = true;
+    //       $(this).removeClass('alternateColor');
+    //     }
+    //   };
+    // });
   }
 
   // Responder for taps on the nav menu to show and hide the links as a menu
@@ -116,9 +109,16 @@
     $('#navigation_bar_menu').show();
   }
 
+  // Add an event reponder for when the drop down menu is tapped
+  $('#navigation_bar_menu').on('click', dropDownMenuHandler);
 
+  // Add event responder for when the drop down menu is dimissed
+  $('#close_menu_link').on('click', dismissDropDownMenuHandler);
 
-  module.navHandler = navHandler;
+  // Start with menu hidden
+  dismissDropDownMenuHandler();
+
+  // module.navHandler = navHandler;
   module.dropDownMenuHandler = dropDownMenuHandler;
   module.dismissDropDownMenuHandler = dismissDropDownMenuHandler;
   module.populateFilters = populateFilters;
