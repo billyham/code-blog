@@ -28,7 +28,7 @@
         {
           title: this.title,
           category: this.category,
-          body: this.body,
+          body: marked(this.body),
           imageMain: this.imageMain,
           additionalText: marked(this.additionalText),
           projectDate: stringDate,
