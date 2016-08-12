@@ -15,10 +15,10 @@
         var arrayToReturn = data
         .filter(function(element){
           // return !element.fork;
-          if (element.name === 'client') return true;
-					if (element.name === 'server') return true;
-					if (element.name === 'confcon') return true;
-					if (element.name === 'cute-bunny-display-widgets') return true;
+          if (element.name === 'ArtHouseBoxOffice-Client') return true;
+					if (element.name === 'ArtHouseBoxOffice-Server') return true;
+					if (element.name === 'Conference-Connect') return true;
+					if (element.name === 'Photo-Albums') return true;
 					if (element.name === 'ArmiesVsSpies') return true;
 					if (element.name === 'Events_List') return true;
 					return false;

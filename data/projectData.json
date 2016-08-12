@@ -21,7 +21,7 @@
     "title": "iPad App for Rental Equipment Checkout",
     "category": "Productivity",
     "imageMain": "gear2.jpg",
-    "body": "A custom iPad app for managing equipment inventory and checkout procedures. The iPad uses a shared server as a data source so that many iPads can be in use among multiple staff members at any one time. Equipment is labeled with QR codes for easy scanning to look up or checkout pieces of gear.\n\nHere is a video demonstrating the app in [action](https://youtu.be/Kq9kMHEM_Vs)",
+    "body": "A custom iPad app for managing equipment inventory and checkout procedures. The iPad uses a shared server as a data source so that many iPads can be in use among multiple staff members at any one time. Equipment is labeled with QR codes for easy scanning to look up or checkout pieces of gear.\n\nHere is a video demonstrating the app in [action](https://www.youtube.com/watch?v=QpV2opc9fGU)",
     "dateOfCreation": "2016-01-07",
     "additionalText": "",
     "gitHubName": ""
