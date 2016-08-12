@@ -7,14 +7,16 @@
     // run callback (a repoView method that displays the array data)
 
     $.ajax({
-      url: '/github/users/billyham/repos' +
-            '?per_page=100' +
-            '&sort=updated',
+      url: '/github/user/repos' +
+            '?per_page=99' +
+            '&sort=url' +
+						'&type=all',
       success:function(data){
         var arrayToReturn = data
         .filter(function(element){
           // return !element.fork;
-          if (element.name === 'app') return true;
+          if (element.name === 'client') return true;
+					if (element.name === 'server') return true;
 					if (element.name === 'confcon') return true;
 					if (element.name === 'cute-bunny-display-widgets') return true;
 					if (element.name === 'ArmiesVsSpies') return true;

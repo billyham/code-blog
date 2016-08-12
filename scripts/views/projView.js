@@ -25,9 +25,9 @@
     });
 
     // Tally of total words and print in footer
-    var totalWordCount = tallyWordCount(projects);
-    $('#wordCount').empty();
-    $('#wordCount').append(totalWordCount);
+    // var totalWordCount = tallyWordCount(projects);
+    // $('#wordCount').empty();
+    // $('#wordCount').append(totalWordCount);
 
     // Add event responders to the show more tags
     $('.showMore').on('click', showMoreHandler);

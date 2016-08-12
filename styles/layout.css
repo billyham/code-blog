@@ -87,6 +87,7 @@ header {
   float: right;
   width: 32px;
   height: 32px;
+	cursor: pointer;
 }
 
 .nav-trigger{
@@ -127,6 +128,10 @@ header {
   padding-top: .25em;
   padding-bottom: .25em;
   padding-left: 1em;
+}
+
+#category_filter_list li a{
+	cursor: pointer;
 }
 
 #github_projects{
@@ -186,7 +191,7 @@ footer {
 
   #navigation_bar_links {
     display: block;
-    width: 290px;
+    width: 400px;
   }
 
   #category_filter {
