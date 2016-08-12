@@ -13,7 +13,13 @@
       success:function(data){
         var arrayToReturn = data
         .filter(function(element){
-          return !element.fork;
+          // return !element.fork;
+          if (element.name === 'app') return true;
+					if (element.name === 'confcon') return true;
+					if (element.name === 'cute-bunny-display-widgets') return true;
+					if (element.name === 'ArmiesVsSpies') return true;
+					if (element.name === 'Events_List') return true;
+					return false;
         })
         .map(function(dataElement){
           return {name: dataElement.name, url: dataElement.html_url, desc: dataElement.description};
